@@ -1,0 +1,62 @@
+---
+driver:
+  name: vagrant
+
+platforms:
+  - name: centos-7.3
+
+provisioner:
+  name: salt_solo
+  is_file_root: true
+  salt_bootstrap_url: https://bootstrap.saltstack.com
+  salt_bootstrap_options: -X -p git -p curl
+  log_level: <%= ENV['SALT_DEBUG_LEVEL'] || 'info' %>
+  salt_copy_filter:
+    - .git
+    - .gitignore
+    - .kitchen
+    - .kitchen.yml
+    - Gemfile
+    - Gemfile.lock
+    - test
+  dependencies:
+    - name: driver-one
+      path: ./test/support
+    - name: driver-two
+      path: ./test/support
+
+suites:
+  - name: driver-one
+    provisioner:
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - driver-one
+        driver-one.sls:
+          hardware-profile-installation:
+            states:
+              - name: driver-one
+                parameters:
+                  a: abc123
+      state_top:
+        base:
+          '*':
+              - up-driver-installer
+  - name: driver-two
+    provisioner:
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - driver-two
+        driver-two.sls:
+          hardware-profile-installation:
+            states:
+              - name: driver-two
+                parameters:
+                  a: def456
+      state_top:
+        base:
+          '*':
+              - up-driver-installer
