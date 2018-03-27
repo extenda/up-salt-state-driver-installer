@@ -9,3 +9,6 @@ proxy-run-{{ loop.index }}:
         pillar:
           up_driver_proxied: {{ state.parameters }}
 {% endfor %}
+
+include:
+  - .javapos

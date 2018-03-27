@@ -7,3 +7,7 @@ describe file("/tmp/driver-one") do
   it { should exist }
   its(:content) { should contain "abc123" }
 end
+
+describe file("/tmp/javapos") do
+  it { should exist }
+end

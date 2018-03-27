@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE JposEntries PUBLIC "-//JavaPOS//DTD//EN" "jpos/res/jcl.dtd">
+<JposEntries>
+    {% for state in states %}
+    <JposEntry logicalName="{{ state.parameters.device.name }}">
+        <creation factoryClass="{{ state.parameters.device.factoryClass }}" serviceClass="{{ state.parameters.device.serviceClass }}"/>
+        <vendor name="{{ state.parameters.device.manufactuer.name }}" url="{{ state.parameters.device.manufactuer.url }}"/>
+        <jpos category="{{ state.parameters.jpos.category }}" version="{{ state.parameters.jpos.version }}"/>
+        <product description="{{ state.parameters.device.name }}" name="{{ state.parameters.device.name }}" url="{{ state.parameters.device.manufactuer.url }}"/>
+
+        {% for key, config in state.parameters.config.items() %}
+        <prop name="{{ config.key }}" type="{{ config.type }}" value="{{ config.value }}"/>
+        {% endfor %}
+    </JposEntry>
+    {% endfor %}
+</JposEntries>
