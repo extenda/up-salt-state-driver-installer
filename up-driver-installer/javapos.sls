@@ -20,3 +20,22 @@ jpos.xml:
         - template: jinja
         - context:
             states: {{ install_states }}
+
+default.configuration.properties:
+    file.managed:
+        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/DefaultConfigurationContext.properties
+        - source: salt://{{ slspath }}/files/DefaultConfigurationContext.properties
+        - template: jinja
+        - context:
+            states: {{ install_states }}
+
+{% for state in install_states %}
+config.{{ state.parameters.device.name }}:
+    file.managed:
+        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/Devices/{{ state.parameters.device.name }}.xml
+        - source: salt://{{ slspath }}/files/device.xml
+        - template: jinja
+        - context:
+            device: {{ state.parameters.device }}
+        - makedirs: True
+{% endfor %}
