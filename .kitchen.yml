@@ -41,9 +41,29 @@ suites:
                   a: abc123
                   device:
                     name: TM-T88V
+                    category: Printer
                     manufactuer:
                       name: Epson
-                      url: https://www.epson.com
+                      url: www.epson.com
+                    factoryClass: jp.co.epson.uposcommon.creator.EpsonJposServiceInstanceFactory
+                    serviceClass: jp.co.epson.upos.T88V.pntr.T88VService
+                  jpos:
+                    category: POSPrinter
+                    version: "1.14"
+                  config:
+                      halftone:
+                        key: Halftone
+                        type: String
+                        value: 0
+              - name: driver-two
+                parameters:
+                  a: def456
+                  device:
+                    name: TM-T88V2
+                    category: Printer
+                    manufactuer:
+                      name: Epson
+                      url: www.epson.com
                     factoryClass: jp.co.epson.uposcommon.creator.EpsonJposServiceInstanceFactory
                     serviceClass: jp.co.epson.upos.T88V.pntr.T88VService
                   jpos:
@@ -73,9 +93,10 @@ suites:
                   a: def456
                   device:
                     name: TM-T88V
+                    category: Printer
                     manufactuer:
                       name: Epson
-                      url: https://www.epson.com
+                      url: www.epson.com
                     factoryClass: jp.co.epson.uposcommon.creator.EpsonJposServiceInstanceFactory
                     serviceClass: jp.co.epson.upos.T88V.pntr.T88VService
                   jpos:
