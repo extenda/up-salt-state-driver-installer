@@ -2,7 +2,7 @@
 <!DOCTYPE config PUBLIC "" "http://www.extenda.com/dtd/config.dtd">
 <config>
 	<group name="Peripherals">
-		<group name="printer">
+		<group name="{{ device.category }}">
 			<value name="logicalName" type="String" modifier="default">{{ device.name }}</value>
 		</group>
 	</group>
