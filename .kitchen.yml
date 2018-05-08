@@ -74,29 +74,15 @@ suites:
                         key: Halftone
                         type: String
                         value: 0
-      state_top:
-        base:
-          '*':
-              - up-driver-installer
-  - name: driver-two
-    provisioner:
-      pillars:
-        top.sls:
-          base:
-            '*':
-              - driver-two
-        driver-two.sls:
-          hardware-profile-installation:
-            states:
-              - name: driver-two
+              - name: driver-three
                 parameters:
                   a: def456
                   device:
-                    name: TM-T88V
-                    category: Printer
+                    name: DG4100
+                    category: Scanner
                     manufactuer:
-                      name: Epson
-                      url: www.epson.com
+                      name: Datalogic
+                      url: www.datalogic.com
                     factoryClass: jp.co.epson.uposcommon.creator.EpsonJposServiceInstanceFactory
                     serviceClass: jp.co.epson.upos.T88V.pntr.T88VService
                   jpos:
