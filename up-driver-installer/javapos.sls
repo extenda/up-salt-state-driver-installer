@@ -1,4 +1,4 @@
-{% set install_states = pillar['hardware-profile-installation']['states'] %}
+{% set install_states = pillar['hardware-profile']['states'] %}
 
 jpos.properties:
     file.managed:
@@ -30,12 +30,12 @@ default.configuration.properties:
             states: {{ install_states }}
 
 {% for state in install_states %}
-config.{{ state.parameters.device.name }}:
+config.{{ state.hardware.model }}:
     file.managed:
-        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ state.parameters.device.category }}/{{ state.parameters.device.name }}.xml
+        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ state.hardware.type }}/{{ state.hardware.model }}.xml
         - source: salt://{{ slspath }}/files/device.xml
         - template: jinja
         - context:
-            device: {{ state.parameters.device }}
+            hardware: {{ state.hardware }}
         - makedirs: True
 {% endfor %}

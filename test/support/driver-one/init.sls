@@ -3,4 +3,4 @@ create-driver-one-file:
     - name: /tmp/driver-one
     - makedirs: True
     - contents: |
-        {{ pillar.up_driver_proxied.a }}
+        {{ pillar.up_driver_proxied.hardware }}

@@ -1,13 +1,18 @@
-{% set install_states = pillar['hardware-profile-installation']['states'] %}
+{% set hardware_profile_states = pillar['hardware-profile']['states'] %}
+#{% set node_id = salt['grains.get']('node_id') %}
 
-{% for state in install_states %}
+#ext_pillar:
+#  - http_json:
+#    url: http://fleetmanager.extenda.io/staging/nodes/1
+
+{% for state in hardware_profile_states %}
 proxy-run-{{ loop.index }}:
   module.run:
     - name: state.sls
     - mods: {{ state.name }}
     - kwargs:
         pillar:
-          up_driver_proxied: {{ state.parameters }}
+          up_driver_proxied: {{ state.hardware }}
 {% endfor %}
 
 include:
