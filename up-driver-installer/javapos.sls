@@ -32,7 +32,7 @@ default.configuration.properties:
 {% for state in install_states %}
 config.{{ state.hardware.model }}:
     file.managed:
-        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ state.hardware.type }}/{{ state.hardware.model }}.xml
+        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ state.hardware.layer }}/{{ state.hardware.model }}.xml
         - source: salt://{{ slspath }}/files/device.xml
         - template: jinja
         - context:

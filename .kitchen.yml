@@ -43,6 +43,7 @@ suites:
                   model: TM-T88V
                   driverPath: s3://somebucket/drivers/Epson_JavaPOS_ADK_1141_for_Linux.tar.gz
                   type: printer
+                  layer: Printer
                   jposEntry:
                     vendor:
                       name: DLA
@@ -135,6 +136,7 @@ suites:
                   model: GD4100-GD4400
                   driverPath: s3://somebucket/drivers/Datalogic_JavaPOS_113_SOMETHING_Linux.tar.gz
                   type: scanner
+                  layer: Scanner
                   jposEntry:
                     vendor:
                       factoryClass: com.dls.jpos.service.DLSScannerInstanceFactory
@@ -227,6 +229,7 @@ suites:
                   model: BA63
                   driverPath: s3://somebucket/drivers/ProBase_JavaPOS_2-6_Linux.tar.gz
                   type: lineDisplay
+                  layer: Linedisplay
                   jposEntry:
                     vendor: 
                       name: Diebold Nixdorf
