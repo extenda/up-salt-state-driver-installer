@@ -24,18 +24,24 @@ provisioner:
       path: ./test/support
     - name: driver-two
       path: ./test/support
+    - name: driver-three
+      path: ./test/support
 
 suites:
   - name: driver-one
     provisioner:
+      state_top:
+        base:
+          '*':
+              - up-driver-installer
       pillars:
         top.sls:
           base:
             '*':
-              - driver-one
-        driver-one.sls:
-          hardware-profile:
-            states:
+              - node-one
+        node-one.sls:
+          hardwareProfile:
+            peripherals:
               - name: driver-one
                 hardware:
                   uuid: ce0ad9b1-f0ab-4f8b-a49f-f8e8082ecce6
@@ -45,14 +51,17 @@ suites:
                   type: printer
                   layer: Printer
                   jposEntry:
+                    creation:
+                      factoryClass: com.dls.jpos.service.DLSScannerInstanceFactory
+                      serviceClass: com.dls.jpos.service.DLSScannerService
                     vendor:
                       name: DLA
                       url: http://www.adc.datalogic.com
-                      factoryClass: com.dls.jpos.service.DLSScannerInstanceFactory
-                      serviceClass: com.dls.jpos.service.DLSScannerService
                     jpos:
                       category: Scanner
                       version: "1.13"
+                    product:
+                      description: "Epson TM-T88V Printer"
                     properties:
                       8xxx:
                           key: 8xxx
@@ -138,14 +147,17 @@ suites:
                   type: scanner
                   layer: Scanner
                   jposEntry:
-                    vendor:
+                    creation:
                       factoryClass: com.dls.jpos.service.DLSScannerInstanceFactory
                       serviceClass: com.dls.jpos.service.DLSScannerService
+                    vendor:
                       name: DLA
                       url: http://www.adc.datalogic.com
                     jpos:
                       category: Scanner
                       version: 1.13
+                    product:
+                      description: "ScannerService"
                     properties:
                       8xxx:
                         key: 8xxx
@@ -219,9 +231,9 @@ suites:
                         key: baudRate
                         type: String
                         value: 9600
-                    jposPath:
-                      lib: /opt/dls/JavaPOS/DLSJavaPOS.jar:/opt/dls/JavaPOS/SupportJars/appframework-1.0.3.jar:/opt/dls/JavaPOS/SupportJars/beansbinding-1.2.1.jar:/opt/dls/JavaPOS/SupportJars/cmdfw.jar:/opt/dls/JavaPOS/SupportJars/comm.jar:/opt/dls/JavaPOS/SupportJars/jargs.jar:/opt/dls/JavaPOS/SupportJars/jcl.jar:/opt/dls/JavaPOS/SupportJars/jsr80.jar:/opt/dls/JavaPOS/SupportJars/jsr80_linux.jar:/opt/dls/JavaPOS/SupportJars/jsr80_ri.jar:/opt/dls/JavaPOS/SupportJars/jna-min-4.0.0.jar:/opt/dls/JavaPOS/SupportJars/jna-platform-4.0.0.jar:/opt/dls/JavaPOS/SupportJars/nrjavaserial-3.9.3.jar
-                      bin: /opt/dls/JavaPOS:/opt/dls/JavaPOS/SupportJars
+                  jposPath:
+                    lib: /opt/dls/JavaPOS/DLSJavaPOS.jar:/opt/dls/JavaPOS/SupportJars/appframework-1.0.3.jar:/opt/dls/JavaPOS/SupportJars/beansbinding-1.2.1.jar:/opt/dls/JavaPOS/SupportJars/cmdfw.jar:/opt/dls/JavaPOS/SupportJars/comm.jar:/opt/dls/JavaPOS/SupportJars/jargs.jar:/opt/dls/JavaPOS/SupportJars/jcl.jar:/opt/dls/JavaPOS/SupportJars/jsr80.jar:/opt/dls/JavaPOS/SupportJars/jsr80_linux.jar:/opt/dls/JavaPOS/SupportJars/jsr80_ri.jar:/opt/dls/JavaPOS/SupportJars/jna-min-4.0.0.jar:/opt/dls/JavaPOS/SupportJars/jna-platform-4.0.0.jar:/opt/dls/JavaPOS/SupportJars/nrjavaserial-3.9.3.jar
+                    bin: /opt/dls/JavaPOS:/opt/dls/JavaPOS/SupportJars
               - name: driver-three
                 hardware:
                   uuid: ed454e71-ad5b-4cbe-94fa-27371f8a82ec
@@ -231,15 +243,17 @@ suites:
                   type: lineDisplay
                   layer: Linedisplay
                   jposEntry:
-                    vendor: 
-                      name: Diebold Nixdorf
-                      url: http://www.dieboldnixdorf.com
+                    creation:
                       factoryClass: com.wn.retail.jpos113.WNJposServiceInstanceFactoryIncLog
                       serviceClass: com.wn.retail.jpos113.WNLineDisplay
-                      description: BA63 line display (2X20) at serial port (RS232)
+                    vendor:
+                      name: Diebold Nixdorf
+                      url: http://www.dieboldnixdorf.com
                     jpos:
                       category: lineDisplay
                       version: 1.13
+                    product:
+                      description: BA63 line display (2X20) at serial port (RS232)
                     properties:
                       lines:
                         key: lines
@@ -292,7 +306,3 @@ suites:
                   jposPath:
                     lib: /opt/wn/javapos/lib/RXTXcomm.jar:/opt/wn/javapos/lib/TPGJavaPOS.jar:/opt/wn/javapos/lib/comm.jar:/opt/wn/javapos/lib/commons-logging.jar:/opt/wn/javapos/lib/jai_codec.jar:/opt/wn/javapos/lib/jai_core.jar:/opt/wn/javapos/lib/javapos-config-loader.jar:/opt/wn/javapos/lib/javapos-contracts.jar:/opt/wn/javapos/lib/jdd-base.jar:/opt/wn/javapos/lib/jdd-selv5.jar:/opt/wn/javapos/lib/jdd-usb.jar:/opt/wn/javapos/lib/jna-platform.jar:/opt/wn/javapos/lib/jna.jar:/opt/wn/javapos/lib/json-simple-1.1.1.jar:/opt/wn/javapos/lib/jsr80.jar:/opt/wn/javapos/lib/jsr80_linux.jar:/opt/wn/javapos/lib/jsr80_ri.jar:/opt/wn/javapos/lib/log4j/log4j-1.2.17.jar:/opt/wn/javapos/lib/mediator.jar:/opt/wn/javapos/lib/wn-cim.jar:/opt/wn/javapos/lib/wn-common-jnaio.jar:/opt/wn/javapos/lib/wn-common-rs232.jar:/opt/wn/javapos/lib/wn-common-usb.jar:/opt/wn/javapos/lib/wn-common.jar:/opt/wn/javapos/lib/wn-fwu-api.jar:/opt/wn/javapos/lib/wn-javapos-cashchanger.jar:/opt/wn/javapos/lib/wn-javapos-common.jar:/opt/wn/javapos/lib/wn-javapos-config.jar:/opt/wn/javapos/lib/wn-javapos-controls-src.jar:/opt/wn/javapos/lib/wn-javapos-controls.jar:/opt/wn/javapos/lib/wn-javapos-diagnostics.jar:/opt/wn/javapos/lib/wn-javapos-f53.jar:/opt/wn/javapos/lib/wn-javapos-fiscalprinter.jar:/opt/wn/javapos/lib/wn-javapos-iscan.jar:/opt/wn/javapos/lib/wn-javapos-jcl-editor.jar:/opt/wn/javapos/lib/wn-javapos-jcl.jar:/opt/wn/javapos/lib/wn-javapos-keylock.jar:/opt/wn/javapos/lib/wn-javapos-kkmps2.jar:/opt/wn/javapos/lib/wn-javapos-kkmusb.jar:/opt/wn/javapos/lib/wn-javapos-linedisplay.jar:/opt/wn/javapos/lib/wn-javapos-mps1086.jar:/opt/wn/javapos/lib/wn-javapos-msr.jar:/opt/wn/javapos/lib/wn-javapos-portalscanner.jar:/opt/wn/javapos/lib/wn-javapos-posprinter.jar:/opt/wn/javapos/lib/wn-javapos-ps7000.jar:/opt/wn/javapos/lib/wn-javapos-retail.jar:/opt/wn/javapos/lib/wn-javapos-samples.jar:/opt/wn/javapos/lib/wn-javapos-scanner.jar:/opt/wn/javapos/lib/wn-javapos-selaco.jar:/opt/wn/javapos/lib/wn-javapos-thxxx.jar:/opt/wn/javapos/lib/wn-javapos-tp07.jar:/opt/wn/javapos/lib/wn-javapos-trace.jar:/opt/wn/javapos/lib/wn-javapos-tsop.jar:/opt/wn/javapos/lib/wn-logger.jar:/opt/wn/javapos/lib/wn-udm-javapos.jar:/opt/wn/javapos/lib/xerces.jar
                     bin: /opt/wn/javapos
-      state_top:
-        base:
-          '*':
-              - up-driver-installer

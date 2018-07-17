@@ -8,6 +8,6 @@ describe file("/tmp/driver-one") do
   its(:content) { should contain "TM-T88V" }
 end
 
-describe file("/tmp/JavaPOS") do
+describe file("/tmp/javapos") do
   it { should exist }
 end

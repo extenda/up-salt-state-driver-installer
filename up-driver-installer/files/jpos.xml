@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE JposEntries PUBLIC "-//JavaPOS//DTD//EN" "jpos/res/jcl.dtd">
 <JposEntries>
-    {% for state in states %}
-    <JposEntry logicalName="{{ state.hardware.model }}">
-        <creation factoryClass="{{ state.hardware.jposEntry.vendor.factoryClass }}" serviceClass="{{ state.hardware.jposEntry.vendor.serviceClass }}"/>
-        <vendor name="{{ state.hardware.jposEntry.vendor.name }}" url="{{ state.hardware.jposEntry.vendor.url }}"/>
-        <jpos category="{{ state.hardware.jposEntry.jpos.category }}" version="{{ state.hardware.jposEntry.jpos.version }}"/>
-        <product description="{{ state.hardware.model }}" name="{{ state.hardware.model }}" url="{{ state.hardware.jposEntry.vendor.url }}"/>
+    {% for peripheral in peripherals %}
+    <JposEntry logicalName="{{ peripheral.hardware.model }}">
+        <creation factoryClass="{{ peripheral.hardware.jposEntry.creation.factoryClass }}" serviceClass="{{ peripheral.hardware.jposEntry.creation.serviceClass }}"/>
+        <vendor name="{{ peripheral.hardware.jposEntry.vendor.name }}" url="{{ peripheral.hardware.jposEntry.vendor.url }}"/>
+        <jpos category="{{ peripheral.hardware.jposEntry.jpos.category }}" version="{{ peripheral.hardware.jposEntry.jpos.version }}"/>
+        <product description="{{ peripheral.hardware.jposEntry.product.description }}" name="{{ peripheral.hardware.model }}" url="{{ peripheral.hardware.jposEntry.vendor.url }}"/>
 
-        {% for key, properties in state.hardware.jposEntry.properties.items() %}
+        {% for key, properties in peripheral.hardware.jposEntry.properties.items() %}
         <prop name="{{ properties.key }}" type="{{ properties.type }}" value="{{ properties.value }}"/>
         {% endfor %}
     </JposEntry>

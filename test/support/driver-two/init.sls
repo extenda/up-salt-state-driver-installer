@@ -3,4 +3,4 @@ create-driver-two-file:
     - name: /tmp/driver-two
     - makedirs: True
     - contents: |
-        {{ pillar.up_driver_proxied.a }}
+        {{ pillar.up_driver_proxied.model }}

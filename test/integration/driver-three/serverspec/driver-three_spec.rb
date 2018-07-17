@@ -3,7 +3,7 @@ require 'serverspec'
 # Required by serverspec
 set :backend, :exec
 
-describe file("/tmp/driver-two") do
+describe file("/tmp/driver-three") do
   it { should exist }
-  its(:content) { should contain "GD4100-GD4400" }
+  its(:content) { should contain "BA63" }
 end

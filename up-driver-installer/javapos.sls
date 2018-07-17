@@ -1,4 +1,4 @@
-{% set install_states = pillar['hardware-profile']['states'] %}
+{% set peripherals = pillar['hardwareProfile']['peripherals'] %}
 
 jpos.properties:
     file.managed:
@@ -19,7 +19,7 @@ jpos.xml:
         - makedirs: True
         - template: jinja
         - context:
-            states: {{ install_states }}
+            peripherals: {{ peripherals }}
 
 default.configuration.properties:
     file.managed:
@@ -27,15 +27,15 @@ default.configuration.properties:
         - source: salt://{{ slspath }}/files/DefaultConfigurationContext.properties
         - template: jinja
         - context:
-            states: {{ install_states }}
+            peripherals: {{ peripherals }}
 
-{% for state in install_states %}
-config.{{ state.hardware.model }}:
+{% for peripheral in peripherals %}
+config.{{ peripheral.hardware.model }}:
     file.managed:
-        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ state.hardware.layer }}/{{ state.hardware.model }}.xml
+        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ peripheral.hardware.layer }}/{{ peripheral.hardware.model }}.xml
         - source: salt://{{ slspath }}/files/device.xml
         - template: jinja
         - context:
-            hardware: {{ state.hardware }}
+            hardware: {{ peripheral.hardware }}
         - makedirs: True
 {% endfor %}
