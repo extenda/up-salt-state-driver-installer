@@ -2,8 +2,8 @@
 <!DOCTYPE config PUBLIC "" "http://www.extenda.com/dtd/config.dtd">
 <config>
 	<group name="Peripherals">
-		<group name="{{ device.category }}">
-			<value name="logicalName" type="String" modifier="default">{{ device.name }}</value>
+		<group name="{{ hardware.type }}">
+			<value name="logicalName" type="String" modifier="default">{{ hardware.model }}</value>
 		</group>
 	</group>
 </config>

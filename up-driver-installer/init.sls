@@ -1,13 +1,13 @@
-{% set install_states = pillar['hardware-profile-installation']['states'] %}
+{% set peripherals = pillar['hardwareProfile']['peripherals'] %}
 
-{% for state in install_states %}
+{% for peripheral in peripherals %}
 proxy-run-{{ loop.index }}:
   module.run:
     - name: state.sls
-    - mods: {{ state.name }}
+    - mods: {{ peripheral.name }}
     - kwargs:
         pillar:
-          up_driver_proxied: {{ state.parameters }}
+          up_driver_proxied: {{ peripheral.hardware }}
 {% endfor %}
 
 include:
