@@ -1,41 +1,52 @@
-{% set peripherals = pillar['hardwareProfile']['peripherals'] %}
+{% set propertiesUrl = salt['pillar.get']('jposPaths:propertiesUrl') %}
+{% set jposEntries = pillar['jposEntries']  %}
+{% set layers = pillar['layers'] %}
 
 jpos.properties:
-    file.managed:
-        - name: /opt/JavaPOS/config_xml/jpos/res/jpos.properties
-        - source: salt://{{ slspath }}/files/jpos.properties
-        - makedirs: True
+  file.managed:
+    - name: /opt/JavaPOS/config_xml/jpos/res/jpos.properties
+    - source: salt://{{ slspath }}/files/jpos.properties
+    - makedirs: True
 
-jpospaths.properties:
-    file.managed:
-        - name: /opt/JavaPOS/jpospaths.properties
-        - source: salt://{{ slspath }}/files/jpospaths.properties
-        - makedirs: True
+downlad.jpospaths.properties:
+  file.managed:
+    - name: /opt/JavaPOS/jpospaths.properties
+    - source: {{ propertiesUrl }}
+    - skip_verify: True
 
-jpos.xml:
-    file.managed:
-        - name: /opt/JavaPOS/config_xml/jpos.xml
-        - source: salt://{{ slspath }}/files/jpos.xml
-        - makedirs: True
-        - template: jinja
-        - context:
-            peripherals: {{ peripherals }}
-
-default.configuration.properties:
-    file.managed:
-        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/DefaultConfigurationContext.properties
-        - source: salt://{{ slspath }}/files/DefaultConfigurationContext.properties
-        - template: jinja
-        - context:
-            peripherals: {{ peripherals }}
-
-{% for peripheral in peripherals %}
-config.{{ peripheral.hardware.model }}:
-    file.managed:
-        - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ peripheral.hardware.layer }}/{{ peripheral.hardware.model }}.xml
-        - source: salt://{{ slspath }}/files/device.xml
-        - template: jinja
-        - context:
-            hardware: {{ peripheral.hardware }}
-        - makedirs: True
+{% for jposEntry in jposEntries %}
+download.jposentry.{{ loop.index }}:
+  file.managed:
+    - name: /opt/JavaPOS/config_xml/{{ loop.index }}.xml
+    - source: {{ jposEntry.xmlUrl }}
+    - skip_verify: True
 {% endfor %}
+
+{% for layer in layers %}
+config.{{ layer.layerName }}:
+  file.managed:
+    - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ layer.layerName|capitalize }}/{{ layer.layerName|capitalize }}.xml
+    - source: salt://{{ slspath }}/files/device.xml
+    - template: jinja
+    - context:
+        layer: {{ layer }}
+    - makedirs: True
+{% endfor %}
+
+python-pip:
+  pkg.installed
+
+pip.dependencies:
+  pip.installed:
+    - names:
+      - glob2==0.6
+      - lxml==4.2.4
+
+transfer.python.file:
+  file.managed:
+    - name: /tmp/create_jpos_xml.py
+    - source: salt://{{ slspath }}/files/create_jpos_xml.py
+
+create.jpos.xml:
+  cmd.run:
+    - name: 'python /tmp/create_jpos_xml.py'

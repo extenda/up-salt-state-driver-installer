@@ -1,13 +1,13 @@
-{% set peripherals = pillar['hardwareProfile']['peripherals'] %}
+{% set drivers = pillar['drivers'] %}
 
-{% for peripheral in peripherals %}
-proxy-run-{{ loop.index }}:
+{% for driver in drivers %}
+install-driver-{{ loop.index }}:
   module.run:
     - name: state.sls
-    - mods: {{ peripheral.name }}
+    - mods:  salt://{{ slspath }}/vendor/{{ driver.packageName }}
     - kwargs:
         pillar:
-          up_driver_proxied: {{ peripheral.hardware }}
+          driverUrl: {{ driver.driverUrl }}
 {% endfor %}
 
 include:
