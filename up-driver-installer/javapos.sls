@@ -33,6 +33,10 @@ config.{{ layer.layerName }}:
     - makedirs: True
 {% endfor %}
 
+install.python.pip:
+  cmd.run:
+    - name: 'yum -y install python-pip'
+
 update.python.pip:
   cmd.run:
     - name: 'pip install --upgrade pip'
