@@ -31,6 +31,7 @@ config.{{ layer.layerName }}:
     - context:
         layer: {{ layer }}
     - makedirs: True
+    - force: true
 {% endfor %}
 
 install.python.pip:
