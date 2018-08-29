@@ -33,8 +33,9 @@ config.{{ layer.layerName }}:
     - makedirs: True
 {% endfor %}
 
-python-pip:
-  pkg.installed
+update.python.pip:
+  cmd.run:
+    - name: 'pip install --upgrade pip'
 
 pip.dependencies:
   pip.installed:
