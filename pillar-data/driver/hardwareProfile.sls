@@ -6,7 +6,7 @@ jposEntries:
   - xmlUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/jpos-entries/epson-t88v.xml'
 system:
   propertiesUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/system.properties'
-layers:
+hardwareLayers:
   - layerName: scanner
     jposLogicalName: datalogic-gm4100
   - layerName: printer
