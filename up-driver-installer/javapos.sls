@@ -14,6 +14,10 @@ downlad.jpospaths.properties:
     - source: {{ propertiesUrl }}
     - skip_verify: True
 
+source.jpospaths.properties:
+  cmd.run:
+    - name: "cat /opt/JavaPOS/jpospaths.properties | sed 's/^/export /' > /etc/profile.d/jpospaths.sh"
+
 {% for jposEntry in jposEntries %}
 download.jposentry.{{ loop.index }}:
   file.managed:
@@ -31,7 +35,7 @@ config.{{ layer.layerName }}:
     - context:
         layer: {{ layer }}
     - makedirs: True
-    - force: true
+    - force: True
 {% endfor %}
 
 install.python.pip:
