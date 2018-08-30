@@ -1,21 +1,18 @@
-{% set drivers = pillar['drivers'] %}
+{% set drivers = salt['pillar.get']('drivers') %}
+{% set driverPackage = drivers | selectattr('packageName','equalto','epson') | map(attribute='driverUrl') | list %}
 
 epson-environment:
-   file.managed:
-     - name: /etc/profile.d/epson.sh
-     - source: salt://{{ slspath }}/files/environment.sh
-     - mode: 775
+  file.managed:
+    - name: /etc/profile.d/epson.sh
+    - source: salt://{{ slspath }}/files/environment.sh
+    - mode: 775
 
-{% for driver in drivers %}
-{% if driver.packageName == 'epson' %}
-downlad.epson.driver.package:
-    file.managed:
-        - name: /tmp/Epson_JavaPOS_ADK_1141_for_Linux.tar.gz
-        - source: {{ driver.driverUrl }}
-        - source_hash: 774b8082d1788e59688a5d284c9e4356
-        - mode: 755
-{% endif %}
-{% endfor %}
+downlad-epson-driver-package:
+  file.managed:
+    - name: /tmp/Epson_JavaPOS_ADK_1141_for_Linux.tar.gz
+    - source: {{ driverPackage }}
+    - skip_verify: True
+    - mode: 755
 
 extract-epson-adk-driver:
   archive.extracted:

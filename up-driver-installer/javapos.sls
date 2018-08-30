@@ -1,6 +1,6 @@
 {% set propertiesUrl = salt['pillar.get']('jposPaths:propertiesUrl') %}
-{% set jposEntries = pillar['jposEntries']  %}
-{% set layers = pillar['hardwareLayers'] %}
+{% set jposEntries = salt['pillar.get']('jposEntries') %}
+{% set layers = salt['pillar.get']('hardwareLayers') %}
 
 jpos.properties:
   file.managed:

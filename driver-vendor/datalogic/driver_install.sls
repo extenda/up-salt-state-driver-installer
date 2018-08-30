@@ -1,4 +1,5 @@
-{% set drivers = pillar['drivers'] %}
+{% set drivers = salt['pillar.get']('drivers') %}
+{% set driverPackage = drivers | selectattr('packageName','equalto','datalogic') | map(attribute='driverUrl') | list %}
 
 datalogic-environment:
   file.managed:
@@ -6,16 +7,12 @@ datalogic-environment:
     - source: salt://{{ slspath }}/files/environment.sh
     - mode: 755
 
-{% for driver in drivers %}
-{% if driver.packageName == 'datalogic' %}
-downlad.datalogic.driver.package:
-    file.managed:
-        - name: /tmp/setup.jar
-        - source: {{ driver.driverUrl }}
-        - source_hash: 66e3e075d3c18bfcbd3e50c41341406b
-        - mode: 755
-{% endif %}
-{% endfor %}
+downlad-datalogic-driver-package:
+  file.managed:
+    - name: /tmp/setup.jar
+    - source: {{ driverPackage }}
+    - skip_verify: True
+    - mode: 755
 
 /tmp/autoinst.xml:
   file.managed:

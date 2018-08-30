@@ -1,4 +1,4 @@
-{% set drivers = pillar['drivers'] %}
+{% set drivers = salt['pillar.get']('drivers') %}
 
 {% for driver in drivers %}
 install-driver-{{ loop.index }}:
