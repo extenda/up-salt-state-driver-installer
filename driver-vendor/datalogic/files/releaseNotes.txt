@@ -1,0 +1,483 @@
+JavaPOS v1.13.126
+        Scanner: Multiple
+        Client: Datalogic ADC, Inc.
+        OS: Multiple
+        IF: Multiple
+        JDK: 1.6.0_45
+
+        ERROR REPORTS:
+			Bugfix to correct problem with line endings in POSTest.sh on 32 bit Linux systems.
+		
+            The following Dimensions Requests are covered in this release:
+            JAVAPOS_SWCR_123, JAVAPOS_SWCR_124, JAVAPOS_SWCR_127, JAVAPOS_SWCR_186, and JAVAPOS_SWCR_189.
+        
+        SOLUTION:
+            The above listed Requests are ready for test along with confirmation that POSTest.sh functions on 32 bit Linux after removing CrLf.
+
+JavaPOS v1.13.125
+        Scanner: Multiple
+        Client: Datalogic ADC, Inc.
+        OS: Multiple
+        IF: Multiple
+        JDK: 1.6.0_45
+
+        ERROR REPORTS:
+            The following Dimensions Requests are covered in this release:
+            JAVAPOS_SWCR_126, JAVAPOS_SWCR_127, and JAVAPOS_SWCR_180.
+        
+        SOLUTION:
+            The above listed Requests are ready for test.
+
+JavaPOS v1.13.124
+        Scanner: Multiple
+        Client: Datalogic ADC, Inc.
+        OS: Multiple
+        IF: Multiple
+        JDK: 1.6.0_45
+
+        ERROR REPORTS:
+            The following Dimensions Requests are covered in this release:
+            JAVAPOS_SWCR_13, JAVAPOS_SWCR_89, JAVAPOS_SWCR_110, JAVAPOS_SWCR_113, JAVAPOS_SWCR_114, JAVAPOS_SWCR_126, 
+			JAVAPOS_SWCR_127, JAVAPOS_SWCR_135, JAVAPOS_SWCR_158, JAVAPOS_SWCR_159, JAVAPOS_SWCR_162, JAVAPOS_SWCR_166, 
+			JAVAPOS_SWCR_177, JAVAPOS_SWCR_179, JAVAPOS_SWCR_180, JAVAPOS_SWCR_102, JAVAPOS_SWCR_183, and JAVAPOS_SWCR_184
+        
+        SOLUTION:
+            The above listed Requests are ready for test.
+
+JavaPOS v1.13.123
+        Scanner: Multiple
+        Client: Datalogic ADC, Inc.
+        OS: Multiple
+        IF: Multiple
+        JDK: 1.6.0_45
+
+        ERROR REPORTS:
+            The following Dimensions Requests are covered in this release 
+			(These tickets free up testing for several other tickets including Power Notify for COM and OEM, plus scale functionality):
+            JAVAPOS_SWCR_114, JAVAPOS_SWCR_172, JAVAPOS_SWCR_174, JAVAPOS_SWCR_175, JAVAPOS_SWCR_176, and JAVAPOS_SWCR_177
+        
+        SOLUTION:
+            The above listed Requests are resolved.
+
+
+JavaPOS v1.13.122
+        Scanner: Multiple
+        Client: Datalogic ADC, Inc.
+        OS: Multiple
+        IF: Multiple
+        JDK: 1.6.0_45
+
+        ERROR REPORTS:
+            The following Dimensions Requests are covered in this release:
+            JAVAPOS_SWCR_50     JEREditor always show up message box "Error saving the file" when closed.
+            JAVAPOS_SWCR_89     Issue with Status Notify Enable checkbox.
+            JAVAPOS_SWCR_109    POSTest NOT display correctly status UNSTABLE WEIGHT on USB OEM IF.
+            JAVAPOS_SWCR_111    Exception caused the system stop polling the scanner endpoint.
+            JAVAPOS_SWCR_113    Power Notify is NOT working.
+            JAVAPOS_SWCR_114    Health command with Single Cable IF has been parsed incorrectly.
+            JAVAPOS_SWCR_118    Exception when Claim to 9800i USB COM profile, if set canNotifyPowerChange=True.
+            JAVAPOS_SWCR_119    Exception when click on O/C/E button on Scale profile.
+            JAVAPOS_SWCR_128    GetScaleSentryStatus cmd should provide the data in the return string to determine if it is ACK or NAK.
+            JAVAPOS_SWCR_133    Scale not Claimed successfully but still proceeded to next step.
+            JAVAPOS_SWCR_135    Enable / Disable 3Byte Status DIO Cmd has sent the "Status Request" cmd instead.
+            JAVAPOS_SWCR_149    DIO_CELL_PHONE_SCAN_ENTER/EXIT USB OEM IF, scanner replied NAK, but tool display as ACK.
+            JAVAPOS_SWCR_157    Jade JavaPOS: Null character added at end of ScanData.
+            JAVAPOS_SWCR_158    Jade JavaPOS: Barcodes less than 6 characters cause exceptions.
+            JAVAPOS_SWCR_160    Jade JavaPOS: allow image folder to be configurable in dls.properties file
+            JAVAPOS_SWCR_161    Jade JavaPOS: DIO for volume cannot be set.
+            JAVAPOS_SWCR_162    Jade JavaPOS: request for logging and system.out decoupling.
+            JAVAPOS_SWCR_167    Invalid configuration key in DLSScannerConfig.
+            JAVAPOS_SWCR_168    Missing sane default in DLSScannerConfig for deleteImageFileAfterRead.
+            JAVAPOS_SWCR_171    JavaPOS erroneously sending Heartbeat Response commands to Jade.
+        
+        SOLUTION:
+            The above listed Requests are resolved.
+
+        FILES MODIFIED:
+            Many files in JavaPOS were modified for this release.
+
+JavaPOS v1.13.121
+	Scanner: Jade
+	 Client: Unknown
+		 OS: Linux
+		 IF: PortalScanner (Ethernet?)
+		JDK: 1.6_45
+	
+	ERROR REPORT:
+		Jade integrator GK Software found that the Jade JavaPOS drivers were delivering two Item Event messages rather than an Item Event message followed by a Label Data message.
+	
+	SOLUTION: 
+		Michael Web fixed the issue in the JavaPOS drivers and also cleaned up some of the POS test output in the Portal Scanner tab.
+		Also includes fix for JAVAPOS_SWCR_116 - Exit button works on the scale tab now.
+		
+	Files Modified:
+		JavaPOS - com.dls.jpos.service.DLSPortalScannerService.java - Updated data structure and changed logic for logging and passing of messages.
+		JavaPOS - com.dls.jpos.interpretation.DLSPortalScanner.java - Updated logic to ensure only one label message and one item message are sent instead of two item messages.
+		POSTest - com.jpos.POStest.PortalScannerPanel.java - Fixed a bug so that message totals display correctly. Printing raw label data and item data to status area. 
+															 Fixed another bug so volume data and host faults now display. 
+
+JavaPOS v1.13.120
+	Scanner: Magellan 9800i
+	 Client: Datalogic ADC, Inc.
+		 OS: Windows 7
+		 IF: USB OEM for internally driven DIO updates.
+		JDK: 1.6_45
+	
+	ERROR REPORT:
+		The video conrol commands were not functioning (again?!)!!!
+	
+	SOLUTION: 
+		Ensured that the data was being validated by and returned from the executeDIO function.
+		
+	Files Modified:
+		JavaPOS - com.dls.jpos.common.DLSJposConst.java - Moved DIO_SCANNER_BEEP to appear next to DIO_SCANNER_DIO_BEEP as they have the same value which is strange.
+		JavaPOS - com.dls.jpos.interpretation.DLSUSBScanner.java - Added command vars for beep, nof beep, and error beep DIO. Updated dioResults function to check the 
+																   "DIO ACCEPTED" status bit and moved the check so that we still check the "DIO ACCEPTED" bit even if there 
+															       is data in the response. 
+																   Added byte array return value to executeDIO so that it actually returns the scanner response for:
+																	DIO_READ_STAT_LOG_COUNT
+																	DIO_CLEAR_EVENT_LOG
+																	DIO_GET_SCALE_SENTRY_STATUS
+																	DIO_CLEAR_SCALE_SENTRY
+																	DIO_CELL_PHONE_ECOMM_ENTER
+																	DIO_CELL_PHONE_ECOMM_EXIT
+																	DIO_CELL_PHONE_SCAN_ENTER
+																	DIO_EXT_VIDEO_STREAM_ON
+																	DIO_EXT_VIDEO_STREAM_OFF
+																	DIO_SCANNER_DIO_BEEP
+																	DIO_SCANNER_DIO_NOF_BEEP
+		JavaPOS - com.dls.jpos.transport.DLSSerialPort.java - Added logging of port name found for Linux exact port name match.
+		POSTest - com.jpos.POStest.ScannerPanel.java - Updated response text for beep commands in USB.
+
+JavaPOS v1.13.119
+	Scanner: Magellan 9800i
+	 Client: Home Depot & Datalogic ADC, Inc.
+		 OS: Windows 7 32 bit
+		 IF: USB OEM for internally driven DIO updates.
+			 USB COM on PM 9500 with weird two way protocol for Home Depot.
+		JDK: 1.6_45
+	
+	ERROR REPORT:
+		PART 1 (Please verify first):
+		In general simply irritated with the DIO functionality and DLSUSBScanner class.
+		Another Datalogic engineer requested the ability to execute and modify a test script for JavaPOS.
+		
+		PART 2 (This can be tested after Part 1 has passed - I probably should do two separate releases but it is all completed):
+		Home Depot is not able to run Firmware Update from their app. Essentially they are getting errors where the scanner stops responding. We need to replicate. 
+		I have been unsuccessful at replicating. I plan to attach the email and logs they forwarded in hopes you might have better luck.
+		
+		Several Dimensions Requests are solved in this release unfortunately it is just crashing nonstop for me this evening I'll try to assign them back to you
+		tomorrow.
+	
+	SOLUTION: 
+		Part 1:
+		Added scripting ability with the creation of JavaPOS/test/VideoControls.java
+		Abstracted DIO results for most calls. Created general function to handle many others. Fixed Video controls again.
+		Extensive update to POSTest including resolution of responses and quite a few dimensions tickets that Alessandro fixed when he was here.
+		
+	Files Modified:
+		JavaPOS - com.dls.jpos.common.dls.properties - Added com.dls.jpos.service.Scanner.timeout for new directIO single packet response method.
+		JavaPOS - com.dls.jpos.interpretation.DLS9xxxScanner.java - Added Error Handling, Logging, and new functions with configurable timeout for accept/reject host commands.
+		JavaPOS - com.dls.jpos.interpretation.DLSDevice.java - Added getDeviceEnabled abstract function for USB-OEM actual reporting from status bit (not used in other interfaces).
+		JavaPOS - com.dls.jpos.interpretation.DLSUSBScanner.java - Added getDeviceEnabled function to return actual status. Update to unify DIO responses. Implemented a new 
+																   function to process commands with single packet responses. 
+		JavaPOS - com.dls.jpos.service.DLSBaseService.java - Added getDeviceEnabled call for usage 0x4a00 (USB-OEM) only.
+		JavaPOS - com.dls.jpos.service.DLSScannerService.java - Changed accept/reject host commands to execute with delay for reset. Updated firmware update feature for PM 9500
+																only to handle errors and log more robustly in hopes of replicating the error.
+		POSTest - com.jpos.POSTest.FirmwareUpdateDlg.java - Added save operation to update dls.properties file with most recent accessed path.
+		POSTest - com.jpos.POSTest.MainButtonPanel.java - Added Enable/Disable buttons to allow for testing of multiple Enable/Disable requests.
+		POSTest - com.jpos.POSTest.ScannerPanel.java - Added video controls. Updated status text font to be mono-spaced for statistics responses. Updated enable/disable checkbox and 
+													   Enable/disable 1 second test to behave correctly in conjunction. Updated enable/disable beep dio response. Converted 
+													   hex string values for DIO_SCANNER_CONFIGURE and actually send with command now instead of doing nothing.
+													   Spliced fix for DIO_SCANNER_DIO_INFORMATION, DIO_SCANNER_DIO_HEALTH, DIO_SCANNER_DIO_STATS back in (it is formatted). 
+													   Fix for DIO_GET_SCALE_SENTRY_STATUS. DIO_CELL_PHONE_ECOMM_ENTER, DIO_CELL_PHONE_ECOMM_EXIT, and fast CFR response fixes.
+																
+JavaPOS v1.13.118
+	Scanner: Magellan 9800i
+	 Client: Walmart South America
+		 OS: Suse 11 SP3 32bits
+		 IF: RS232 Single Cable
+		JDK: 1.6_45
+	
+	ERROR REPORT:
+		The scanner/scale Datalogic 8200 using single cable connected in port 2 with JPOS, but there are some conflict  when I connect another hardware (pinpad veriphone) 
+		using USB (this pinpad automatic configure in /dev/ttsACM0) I don’t know when I have some hardware using ttsACM0 the datalogic JPOS tries always to automatically 
+		use that port ACM0 and not the ttyS1 port where is connected. It is very rare, I unplugged the pinpad and works well, I return it to connect and fails, always the 
+		JPOS is monitoring the port ACM0 and if it is used as a first priority.
+ 
+		I need to know how to make always use the ttyS1 that is configured and do not use ttyACM0
+ 
+		In the log:
+		 
+		07/23/15 10:13:26.909 + DLSSerialPort: openPort
+		07/23/15 10:13:26.909 = DLSSerialPort: Port: 2, reported from jpos.xml
+		07/23/15 10:13:26.943 = DLSSerialPort: Port: /dev/ttyACM0, as identified by ComPortIdentrifier
+ 
+		The scanner/scanner is connected in port 2 (ttyS1) but automatically assign /dev/ttyACM0 this ttyACM0 is the pinpad.
+	
+	SOLUTION: 
+		Added exact portName matching that overrides existing logic for linux only. When a complete port name such as "/dev/ttyS1" is entered in jpos.xml for 
+		portName the openPort function first checks to see if that port exists and uses it if so instead of iterating all ports and searching for a valid serial 
+		connection. This needed to be implemented because USB COM devices are given precedence in the old logic and a pin pad at ttyACM0 was incorrectly identified as 
+		our device.
+	
+	Files Modified:
+		JavaPOS - jpos.xml - Added a new single cable exact port matching example profile and updated another logical name to stipulate configuration example.
+		JavaPOS - com.dls.jpos.service.DLSScaleService.java - Simply added error logging in three previously unlogged locations.
+		JavaPOS - com.dls.jpos.transport.DLSSerialPort.java - Added exact portName matching to allow "/dev/ttyS1" as a valid value in jpos.xml.
+		
+	Minor Unrelated Changes
+		JavaPOS - com.dls.jpos.transport.DLSSerialPort.java (serialEvent) - Reverted to old version for linux bug that was inadvertantly introduced.
+
+JavaPOS v1.13.117
+	Scanner: Magellan 9800i
+	 Client: Migros (S3)
+		 OS: Suse 11
+		 IF: USB OEM
+		JDK: 1.6_45
+	
+	ERROR REPORT:
+		1. execution speed of the Ecomm reader on/off command: 
+
+			Unless I'm doing something wrong, we cannot see any improvement with respect to the previous version of JavaPOS and scanner firmware. See the attached 
+			"4800-745 - Case 1.zip". Both the DIO_CELL_PHONE_ECOMM_ENTER and DIO_CELL_PHONE_ECOMM_EXIT are taking approximately 1.5 seconds to execute: 
+
+			07/22/15 20:04:55.179 - DLSUSBScanner : Migros-DLS-Magellan-9800i-USB-OEM-Scanner-Scale-Config-Update[oid:897398141 tid:13] : directIO for: 1555 milliseconds 
+
+			This is the same time needed in the previous version. The major difference that we see is that now the Ecomm reader is enabled/disabled almost immediately after 
+			issuing the command (we can see it from the green led light around the reader that goes on and off), but the return code of the command still needs 1.5 seconds to 
+			come back to the application. It seems to us an implementation trick to give to the operator the impression that the command has been executed quickly, but the 
+			application needs the same time as before to process the command. We are curious: what should be the improvement that we would have expected to see in this case? 
+			Do you obtain the same time on your side? 
+
+			Another thing that we cannot explain is why the execution of DIO_CELL_PHONE_ECOMM_ENTER when the Ecomm reader is already enabled (or the execution of 
+			DIO_CELL_PHONE_ECOMM_EXIT when the Ecomm reader is already disabled) still takes 1.5 seconds, while it could be probably reduced to a void/empty command 
+			(it seems pointless to spend time to enable the Ecomm reader if it's already enabled and vice versa, but maybe there could be a good technical reason why 
+			it has been implemented in this way, or maybe in this case there is space for a some optimization). 
+
+		2. execution of the Ecomm reader on/off command when the scanner is disabled: 
+
+			When the scanner (from the JavaPOS point of view) is disabled (in other words, after issuing a setDeviceEnabled( false ) ), the Ecomm reader cannot be enabled/disabled. 
+			This is already known and reasonable. But the execution of the DIO_CELL_PHONE_ECOMM_ENTER and DIO_CELL_PHONE_ECOMM_EXIT commands when the scanner is disabled are ending 
+			with an OK return code, while it would be better to have an error, because the command has not been executed. In other words, the OK return code gives to the caller the 
+			false impression that the command has been successfully executed, which is not the case. See "4800-745 - Case 2.zip". 	
+
+		3. failure opening the scanner: 
+
+			On some slower POS models (I have tried on 4800-741, used by Migros, and 4800-723, not used by Migros) the scanner cannot be even opened. I see from the log that some data are written to the scanner and an answer is received back, so it's seems that an initial communication has been established: 
+
+			07/20/15 17:29:26.524 ^ DLSUsbJavax : DLS Magellan 9800i[oid:1330466637 tid:15] : # raw bytes sent[11] 0x30 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 
+			07/20/15 17:29:26.525 - DLSUsbJavax : DLS Magellan 9800i[oid:1330466637 tid:15] : sendData 
+			07/20/15 17:29:26.543 ^ DLSUsbJavax : DLS Magellan 9800i[oid:1330466637 tid:32] : # bytes received[64] 0x40 0x40 0x01 0x08 0x10 0x01 0x02 0x41 0x44 0x52 0x39 0x34 0x30 0x30 0x33 0x38 0x33 0x03 0x02 0x52 0x30 0x34 0x34 0x34 0x03 0x02 0x43 0x58 0x52 0x39 0x36 0x31 0x30 0x37 0x33 0x31 0x41 0x03 0x02 0x53 0x47 0x31 0x33 0x4C 0x34 0x30 0x34 0x38 0x32 0x03 0x02 0x4D 0x39 0x38 0x31 0x30 0x31 0x30 0x31 0x31 0x32 0x30 0x2D 0x30 
+			07/20/15 17:29:26.544 + DLSUSBScanner : Migros-DLS-Magellan-9800i-USB-OEM-Scanner-Scale-Config-Update[oid:671557639 tid:32] : onDataReceived 
+			07/20/15 17:29:26.575 ^ DLSUSBScanner : Migros-DLS-Magellan-9800i-USB-OEM-Scanner-Scale-Config-Update[oid:671557639 tid:15] : #concatinated bytes received[0] 
+			07/20/15 17:29:26.577 *ERR* DLSScannerService[oid:4587590 tid:15] : 0x80000008, Unable to get statistics data. 
+			07/20/15 17:29:26.577 *ERR* DLSScannerService[oid:4587590 tid:15] : retrieveStatistics: 106 0x80000008, Unable to get statistics data. 
+
+			But for some reason the claiming cannot be completed. See 4800-741.zip and 4800-723.zip. I have done the installation from scratch two times to double check 
+			the procedure, and these POS are using the very same operating system image installed on the 4800-745 POS model that I have used to upgrade the scanner 
+			firmware and to do the tests described in point #1 and #2 (as operating system we are now targeting SLEPOS11-SP3). 
+
+			I have tried, too, to install on a 4800-742 POS (which is not as quick as the 745 but quicker than 741/723). In this case I have seen a couple of times a 
+			failure opening the scanner with the same error code (0x80000008) that I have seen on 741/723, but normally the scanner can be opened on this POS models, 
+			and I have been able to do a firmware upgrade, too. 
+
+			Can you please check for what reason the scanner cannot be claimed on these slower POS models? Is possible that the different speed of the POS can cause an 
+			issue like this? 
+
+			Note: for the moment we have tested the scanner using only the the Java POSTest utility. We think it's pointless to start testing it with the real application 
+			until these issues will be sorted out (either if the issues are happening because we are doing something wrong during the test or because there is still something 
+			that must be refined on the JavaPOS driver or on the scanner firmware). 
+	
+	SOLUTION: 
+		1. Removed a 1500 millisecond timeout from the DirectIO calls for these commands.
+		2. Updated the return codes for these commands to accurately show ACK/NAK and Error/OK responses.
+		3. If you have time and any ancient systems lying around you might test a variable in dls.properties by changing the timeout value
+		   com.dls.jpos.service.Scanner.objWaitTime	
+	
+	Files Modified:
+		JavaPOS - com.dls.jpos.interpretation.DLSUSBScanner.java (directIO) - Steps 1 & 2 from SOLUTION section above.
+		JavaPOS - com.dls.jpos.service.DLSScannerService.java (loadConfigItems) - Fixed the loadConfigItems and cleaned it up for Alassandro to start work.
+		
+	Minor Unrelated Changes
+		JavaPOS - com.dls.jpos.transport.DLSSerialPort.java (serialEvent) - Reverted to old version for linux bug that was inadvertantly introduced.
+
+
+JavaPOS v1.13.116
+	Scanner: PM9500
+	 Client: Home Depot
+		 OS: Windows 32 bit
+		 IF: USB COM - Special two way protocol appends symbols to the end Example:  048500001745%P1.2%V
+		JDK: 1.6_45
+	
+	ERROR REPORT:
+		While the scanner was updating during the firmware update process it was reported that a JPOS_ILLEGAL error was being thrown at the end of the process.
+		After host download is complete we send a reset command and for this "special" home depot scanner that command is sent in service port mode (0x24 0x53 0x2C 0x41 0x72 0x0D).
+		There are two things wrong with the log section below.
+		1.  Notice that while we do get a response from the reset command there is no closing fireDataReceivedEvent statement which implies an error occurred.
+		2.  Notice that there is no response to the final command which sets rejectHostCommands to true and yet again restarts the scanner (also indicates error).
+		
+		After they ran firmware update the last several lines of the log looked like this:
+		07/07/15 18:36:39.307 = DLSSerialPort : DLS Powerscan M9500 Scanner[oid:42246 tid:63] : bytes sent[6] 0x24 0x53 0x2C 0x41 0x72 0x0D
+		07/07/15 18:36:39.308 + DLS9xxxScanner : DLS-Powerscan-M9500-USB-COM[oid:2100498 tid:63] : restoreBaudRate
+		07/07/15 18:36:39.308 - DLS9xxxScanner : DLS-Powerscan-M9500-USB-COM[oid:2100498 tid:63] : restoreBaudRate
+		07/07/15 18:36:39.308 = DLSScannerService[oid:1725903 tid:63] : Records sent: 3919
+		07/07/15 18:36:39.308 + DLSScannerService[oid:1725903 tid:63] : onDeviceStatus: NONE
+		07/07/15 18:36:39.310 - DLSScannerService[oid:1725903 tid:63] : onDeviceStatus
+		07/07/15 18:36:39.311 - DLSScannerService[oid:1725903 tid:63] : Done updating firmware for: 00:03:31:968
+		07/07/15 18:36:39.821 + DLSSerialPort : DLS Powerscan M9500 Scanner[oid:42246 tid:115] : fireDataReceivedEvent
+		07/07/15 18:36:39.821 ^ DLSSerialPort : DLS Powerscan M9500 Scanner[oid:42246 tid:115] : # bytes received[5] 0x24 0x3E 0x2C 0x3E 0x0D
+		07/07/15 18:36:39.821 ^ DLS9xxxScanner : DLS-Powerscan-M9500-USB-COM[oid:2100498 tid:115] : onDataReceived: $>,>
+
+		07/07/15 18:37:19.317 = DLSSerialPort : DLS Powerscan M9500 Scanner[oid:42246 tid:63] : bytes sent[14] 0x24 0x53 0x2C 0x43 0x49 0x46 0x49 0x48 0x30 0x31 0x2C 0x41 0x72 0x0D
+		
+	
+	SOLUTION: 
+		I believe the error was caused by the host command response from the service port reset command that's sent after host download is completed for the PM9500.
+		I added two checks in the onDataReceived Method of the DLS9xxxScanner class. The first check looks for the host command response on reset ($>,>) and returns after log.
+		The second piece of validation ensures that after the barcode string is split on the percent symbol it must have a minimum length of 3 which will prevent this error from 
+		happening in the future should we receive similar unexpected responses.
+		
+	TESTING INSTRUCTIONS:
+		Simply perform a few runs of firmware update on a 32 bit windows machine if possible.
+		
+		At the end of the firmware download process the last several lines should look like this (instead of corresponding log from client in ERROR REPORT above):
+		07/10/15 15:22:52.415 = DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:34] : bytes sent[6] 0x24 0x53 0x2C 0x41 0x72 0x0D
+		07/10/15 15:22:52.415 ^ DLS9xxxScanner : DLS-Powerscan-M9500-USB-COM[oid:496623895 tid:34] : restoreBaudRate called - doing nothing for 9xxx scanner.
+		07/10/15 15:22:52.415 = DLSScannerService[oid:1949902398 tid:34] : Records sent: 3919
+		07/10/15 15:22:52.415 + DLSScannerService[oid:1949902398 tid:34] : onDeviceStatus: NONE
+		07/10/15 15:22:52.418 - DLSScannerService[oid:1949902398 tid:34] : onDeviceStatus
+		07/10/15 15:22:52.419 - DLSScannerService[oid:1949902398 tid:34] : Done updating firmware for: 00:01:20:271
+		07/10/15 15:22:52.419 ^ DLSScannerService[oid:1949902398 tid:34] : sleeping for 40000 milliseconds [no new commands on this thread]...
+		07/10/15 15:22:52.939 + DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:28] : fireDataReceivedEvent
+		07/10/15 15:22:52.939 ^ DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:28] : # bytes received[5] 0x24 0x3E 0x2C 0x3E 0x0D
+		07/10/15 15:22:52.939 ^ DLS9xxxScanner : DLS-Powerscan-M9500-USB-COM[oid:496623895 tid:28] : Service port reset command response received: $>,>
+
+		07/10/15 15:22:52.939 - DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:28] : fireDataReceivedEvent
+		07/10/15 15:23:32.421 = DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:34] : bytes sent[14] 0x24 0x53 0x2C 0x43 0x49 0x46 0x49 0x48 0x30 0x31 0x2C 0x41 0x72 0x0D
+		07/10/15 15:23:32.946 + DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:28] : fireDataReceivedEvent
+		07/10/15 15:23:32.946 ^ DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:28] : # bytes received[7] 0x24 0x3E 0x2C 0x3E 0x2C 0x3E 0x0D
+		07/10/15 15:23:33.421 ^ DLS9xxxScanner : DLS-Powerscan-M9500-USB-COM[oid:496623895 tid:28] : onDataReceived (hostCmdResponse):$>,>,>
+
+		07/10/15 15:23:33.421 - DLSSerialPort : DLS Powerscan M9500 Scanner[oid:1248727999 tid:28] : fireDataReceivedEvent
+	
+	Files Modified:
+		JavaPOS - com.dls.jpos.interpretation.DLS9xxxScanner.java (onDataReceived) - Added validation to ensure we really have a barcode. Checking for reset response.
+		JavaPOS - dls.properties - added a new com.dls.jpos.service.Scanner.resetTimeout property which defaults to 40000 to wait forty seconds after resetting a 9xxx scanner 
+				  before sending additional commands.
+		JavaPOS - com.dls.jpos.service.DLSScannerService.java (updateFirmware) - Changed timeout to be configurable based on new value in dls.properties file.
+		JavaPOS - com.dls.jpos.transport.DLSSerialPort.java (serialEvent) - Added the generic Exception type as a third and final stop gap when firing data received events.
+		
+	Minor Unrelated Changes
+		JavaPOS - com.dls.jpos.interpretation.DLSUSBScanner.java (sendCommandAndWaitForResponse) - Removed an old poorly written log entry.
+		JavaPOS - com.dls.jpos.service.DLSBaseService.java (retrieveStatistics) - changed to retrieve statistics in real time.
+		JavaPOS - com.dls.jpos.service.DLSScaleService.java (claim & release) - removed redundant add/remove status listener.
+
+JavaPOS v1.13.115
+	JDK 1.6_45
+	Windows and Linux compatible
+
+	ERROR REPORT:
+	1.  Migros was not satisfied with the performance of cell phone reading.
+	2.  Serial communication optimizations.
+	
+	SOLUTION: 
+	1.  Firmware stipulated which configuration items need to be changed and I added two new options to enable/disable Fast CFR in POSTest. I also did change some 
+	    aspects of the openPort function for serial scanners. 
+	2.  Moved the library path class into the log manager so that it will only be executed once instead of every time the 
+		port is opened. Removed some logic that didn't make any sense, should work the same as always. Changed the getOptionAsInt function so that it always returns an integer 
+		if there is a value instead of catching an exception and returning zero.
+
+	TESTING INSTRUCTIONS:
+	1.  Please run through regression testing with a serial handheld and fixed scanner.
+	2.  Test 9800i with special Migros config (Bottom of drop down in POSTest) - There was a bug preventing 032B from updating. All values are now four bytes. String values 
+	    now function. Not sure how we missed this. Ultimately I would like to see a test routine that tests all tag item data types, though from a programmatic perspective we 
+	    only have two types (integer and non-integer) we still need to run through and make sure that all non-integer data types from doors function in JavaPOS.
+	
+	CLIENT INTERFACES:
+	1.  DLS - RS232
+	2.  Migros - USB OEM
+	
+
+JavaPOS v1.13.114
+JDK 1.6_45
+
+ERROR REPORT:
+Missing commands in DIO section of POSTest for Fast CFR.
+	
+	Solution: Added the commands. Updated the XML to include the custom tag item updates. Also in this release is a library conflict identified so that JRE 4.0.0 is now being used.
+
+JavaPOS v1.13.114
+JDK 1.6_45
+
+ERROR REPORT:
+I found that the classpath was being set incorrectly in the shell scripts and batch files.
+	
+	Solution: Updated all shell scripts and batch files to include correct, potentially future proof classpath by using a wildcard and added documentation.
+
+JavaPOS v1.13.113
+JDK 1.6_45
+
+ERROR REPORT:
+Scanner stopped working after problem label was scanned.
+
+	Solution: Stopped parsing barcode based on carriage return for 8xxx and 9xxx scanners. There are also log manager improvements in this 
+	release dealing with file handling that ensure the log file gets created in a writable location.
+
+
+JavaPOS v1.13.112 
+jdk 1.6_45
+
+ERROR REPORT:
+USB OEM Handheld scanners not reporting disconnect error events.
+
+	Solution: Enabled disconnect events and added logging for all error events in the fireDeviceErrorStatusEvent() function. To register disconnect errors 
+	there is a property in dls.properties that must be set to true called com.dls.jpos.service.ScannerService.PostRemovalErrorEvents.
+	
+	Files Modified:
+		JavaPOS - com.dls/jpos/service/DLSBaseService.java - Updated version.
+		JavaPOS - com.dls/jpos/interpretation/DLSUSBScanner.java - Added device removed error event.
+		JavaPOS - com.dls/jpos/interpretation/DLSDevice.java - Added logging of all error events in the fireDeviceErrorStatusEvent() function.
+		JavaPOS - com.dls/jpos/service/DLSScannerService.java - Converted convertStatusToReadable() to be a static method for calls from DLSDevice.java
+																Removed duplicated log messages as they all occur in fireDeviceErrorStatusEvent() now.
+
+JavaPOS v1.13.111
+
+ERROR REPORT:
+After testing on a system with the hardware and firmware it was uncovered that the timeout was not long enough and was returning error codes on successful command.
+
+	Solution: Increased the timeouts for those commands only by calling a function with a built in extra second delay. Increased the overall timeout from 100 milliseconds
+	to 500 milliseconds.
+	
+	Files Modified:
+		JavaPOS - com.dls.jpos.interpretation.DLSUSBScanner.java - Bug fixes to increase timeout for video stream controls.
+		JavaPOS - com.dls.jpos.common.DLSLogManager.java - Removed redundant date.
+		JavaPOS - com.dls.jpos.service.DLSBaseService.java - Removed redundant logging of JavaPOS version.
+		
+
+JavaPOS v1.13.110
+
+ERROR REPORT:
+The commands for video streaming have changed and need to be updated.
+
+	Solution: Simply updated the commands for video streaming (to turn on and off).
+	
+	Files Modified:
+		JavaPOS - com.dls.jpos.interpretation.DLSUSBScanner.java - Modified local byte arrays to appropriate values. Commented out status command as none exists in new command set.
+
+		
+JavaPOS v1.13.109
+
+ERROR REPORT:
+Home Depot needs to be able to update their HH scanners with JavaPOS. Error occurred with desired firmware and model.
+
+	Solution: Added timeouts to delay system calls. The unit in question enables host commands, then after the host download is complete 
+	the host commands are disabled. There was some syncronisity problem with the device being reset while the command is set or the like.
+	
+	Files Modified:
+		JavaPOS - com.dls.jpos.common.FunctionLib.java - New class to hold functions that are commonly used throughout the application (one to convert byte array to a string).
+		JavaPOS - com.dls.jpos.common.DLSLogManager.java - Updated the log utility to use a hash map of object ids instead of looking up classname via reflection 
+				                       [also added deviceName, Object ID, and Thread ID].
+		JavaPOS - com.dls.jpos.transportation.DLSPort.java - Added logging to send command to show the actual bytes sent instead of only the length.
+		JavaPOS - com.dls.jpos.service.DLSScannerService.java - Increased timeout to 40 seconds for 9xxx scanners.
+		JavaPOS - com.dls.jpos.interpretation.DLSDevice.java

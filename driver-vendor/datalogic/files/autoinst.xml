@@ -1,0 +1,23 @@
+<AutomatedInstallation langpack="eng">
+    <com.izforge.izpack.panels.DLSHelloPanel/>
+    <com.izforge.izpack.panels.LicencePanel/>
+    <com.izforge.izpack.panels.TargetPanel>
+        <installpath>/opt/dls/JavaPOS</installpath>
+    </com.izforge.izpack.panels.TargetPanel>
+    <com.izforge.izpack.panels.PacksPanel>
+        <selected>
+            <pack index="0"/>
+            <pack index="1"/>
+            <pack index="2"/>
+            <pack index="3"/>
+            <pack index="4"/>
+            <pack index="5"/>
+            <pack index="6"/>
+            <pack index="7"/>
+            <pack index="8"/>
+            <pack index="9"/>
+        </selected>
+    </com.izforge.izpack.panels.PacksPanel>
+    <com.izforge.izpack.panels.InstallPanel/>
+    <com.izforge.izpack.panels.FinishPanel/>
+</AutomatedInstallation>
