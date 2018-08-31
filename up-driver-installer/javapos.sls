@@ -16,7 +16,7 @@ downlad.jpospaths.properties:
 
 source.jpospaths.properties:
   cmd.run:
-    - name: "cat /opt/JavaPOS/jpospaths.properties | sed 's/^/export /' > /etc/profile.d/jpospaths.sh"
+    - name: "cat /opt/JavaPOS/jpospaths.properties | tr -s '\n' | sed 's/^/export /' > /etc/profile.d/jpospaths.sh"
 
 {% for jposEntry in jposEntries %}
 download.jposentry.{{ loop.index }}:
