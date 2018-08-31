@@ -28,6 +28,6 @@ install-datalogic-dls-driver:
   cmd.run:
     - name: 'java -jar setup.jar /tmp/autoinst.xml'
     - cwd: '/tmp'
-    - env:
-      - JAVA_HOME: /opt/jdk1.8.0_144
+#    - env:
+#      - JAVA_HOME: /opt/jdk1.8.0_144
     - unless: 'ls /opt/dls'

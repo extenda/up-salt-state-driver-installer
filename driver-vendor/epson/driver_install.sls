@@ -25,6 +25,6 @@ install-epson-adk-driver:
   cmd.run:
     - name: 'env && bash JavaPOSInstall.sh'
     - cwd: '/tmp/Epson_JavaPOS_ADK_1141_for_Linux'
-    - env:
-      - JAVA_HOME: /opt/jdk1.8.0_144
+#    - env:
+#      - JAVA_HOME: /opt/jdk1.8.0_144
     - unless: 'ls /opt/EpsonJavaPOS'
