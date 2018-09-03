@@ -1,7 +1,7 @@
+import StringIO
 import copy
 import glob
 from lxml import etree
-import StringIO
 
 jpos_file = '/opt/JavaPOS/config_xml/jpos.xml'
 

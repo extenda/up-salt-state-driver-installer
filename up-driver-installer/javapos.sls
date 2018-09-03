@@ -14,9 +14,13 @@ downlad.jpospaths.properties:
     - source: {{ propertiesUrl }}
     - skip_verify: True
 
-source.jpospaths.properties:
+set.environment.jpospaths.properties:
   cmd.run:
     - name: "cat /opt/JavaPOS/jpospaths.properties | tr -s '\n' | sed 's/^/export /' > /etc/profile.d/jpospaths.sh"
+
+salt.set.environment.jpospaths.properties:
+  cmd.run:
+    - name: "cat /opt/JavaPOS/jpospaths.properties | tr -s '\n' | sed 's/^/export /'"
 
 {% for jposEntry in jposEntries %}
 download.jposentry.{{ loop.index }}:
