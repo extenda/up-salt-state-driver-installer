@@ -42,20 +42,6 @@ config.{{ layer.layerName }}:
     - force: True
 {% endfor %}
 
-install.python.pip:
-  cmd.run:
-    - name: 'yum -y install python-pip'
-
-update.python.pip:
-  cmd.run:
-    - name: 'pip install --upgrade pip'
-
-pip.dependencies:
-  pip.installed:
-    - names:
-      - glob2==0.6
-      - lxml==4.2.4
-
 transfer.python.file:
   file.managed:
     - name: /tmp/create_jpos_xml.py
