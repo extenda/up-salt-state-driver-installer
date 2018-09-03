@@ -16,7 +16,7 @@ downlad.jpospaths.properties:
 
 set.environment.jpospaths.properties:
   cmd.run:
-    - name: "cat /opt/JavaPOS/jpospaths.properties | tr -s '\n' | sed 's/^/export /' > /etc/profile.d/jpospaths.sh"
+    - name: "cat /opt/JavaPOS/jpospaths.properties | tr -s '\n' | sed 's/^/export /' > /etc/profile.d/jpospaths.sh && chmod +x /etc/profile.d/jpospaths.sh"
 
 salt.set.environment.jpospaths.properties:
   cmd.run:
