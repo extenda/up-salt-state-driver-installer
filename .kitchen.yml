@@ -26,6 +26,11 @@ provisioner:
   pillars_from_directories:
     - pillar-data
 
+verifier:
+  name: serverspec
+  remote_exec: false
+  default_pattern: true
+
 suites:
   - name: driver
     provisioner:
