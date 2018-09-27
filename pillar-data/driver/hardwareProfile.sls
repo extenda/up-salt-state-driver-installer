@@ -1,9 +1,7 @@
 jposPaths:
   propertiesUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/jpospaths.properties'
 jposEntries:
-  - xmlUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/jpos-entries/datalogic-mg3300.xml'
-  - xmlUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/jpos-entries/datalogic-gm4100.xml'
-  - xmlUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/jpos-entries/epson-t88v.xml'
+  xmlUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/jpos-entries/merged.xml'
 system:
   propertiesUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/system.properties'
 hardwareLayers:
