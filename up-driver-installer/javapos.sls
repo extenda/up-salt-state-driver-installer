@@ -1,5 +1,5 @@
 {% set propertiesUrl = salt['pillar.get']('jposPaths:propertiesUrl') %}
-{% set jposEntries = salt['pillar.get']('jposEntries') %}
+{% set jposEntries = salt['pillar.get']('jposEntries:xmlUrl') %}
 {% set layers = salt['pillar.get']('hardwareLayers') %}
 
 jpos.properties:
@@ -22,13 +22,11 @@ salt.set.environment.jpospaths.properties:
   cmd.run:
     - name: "cat /opt/JavaPOS/jpospaths.properties | tr -s '\n' | sed 's/^/export /'"
 
-{% for jposEntry in jposEntries %}
-download.jposentry.{{ loop.index }}:
+download.jpos.xml:
   file.managed:
-    - name: /opt/JavaPOS/config_xml/{{ loop.index }}.xml
-    - source: {{ jposEntry.xmlUrl }}
+    - name: /opt/JavaPOS/config_xml/jpos.xml
+    - source: {{ jposEntries }}
     - skip_verify: True
-{% endfor %}
 
 {% for layer in layers %}
 config.{{ layer.layerName }}:
@@ -41,12 +39,3 @@ config.{{ layer.layerName }}:
     - makedirs: True
     - force: True
 {% endfor %}
-
-transfer.python.file:
-  file.managed:
-    - name: /tmp/create_jpos_xml.py
-    - source: salt://{{ slspath }}/files/create_jpos_xml.py
-
-create.jpos.xml:
-  cmd.run:
-    - name: 'python /tmp/create_jpos_xml.py'
