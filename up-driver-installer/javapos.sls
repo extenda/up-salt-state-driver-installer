@@ -1,6 +1,6 @@
 {% set propertiesUrl = salt['pillar.get']('jposPaths:propertiesUrl') %}
-{% set jposEntries = salt['pillar.get']('jposEntries:xmlUrl') %}
-{% set layers = salt['pillar.get']('hardwareLayers') %}
+{% set xmlUrl = salt['pillar.get']('jposEntries:xmlUrl') %}
+{% set hardwareLayers = salt['pillar.get']('hardwareLayers') %}
 
 jpos.properties:
   file.managed:
@@ -25,13 +25,13 @@ salt.set.environment.jpospaths.properties:
 download.jpos.xml:
   file.managed:
     - name: /opt/JavaPOS/config_xml/jpos.xml
-    - source: {{ jposEntries }}
+    - source: {{ xmlUrl }}
     - skip_verify: True
 
-{% for layer in layers %}
-config.{{ layer.layerName }}:
+{% for layer in hardwareLayers %}
+config.{{ layer.layer }}:
   file.managed:
-    - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ layer.layerName|capitalize }}/{{ layer.layerName|capitalize }}.xml
+    - name: /opt/extenda/pos/nodes/commonclientconfig/config/layers/{{ layer.layer|capitalize }}/{{ layer.layer|capitalize }}.xml
     - source: salt://{{ slspath }}/files/device.xml
     - template: jinja
     - context:

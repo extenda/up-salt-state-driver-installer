@@ -5,14 +5,19 @@ jposEntries:
 system:
   propertiesUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/system.properties'
 hardwareLayers:
-  - layerName: scanner
+  - layer: scanner
+    port: usb
     jposLogicalName: datalogic-gm4100
-  - layerName: printer
+  - layer: printer
+    port: usb
     jposLogicalName: epson-t88v
-  - layerName: scanner2
+  - layer: scanner2
+    port: usb
     jposLogicalName: datalogic-mg3300
 drivers:
   - packageName: datalogic
+    version: 1.0.0
     driverUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/drivers/Datalogic_setup.jar'
   - packageName: epson
+    version: 1.0.0
     driverUrl: 'https://s3-eu-west-1.amazonaws.com/fleetmanager-mock-bucket-6qmnqqjjmfql-bucket-7ods0lg532u8/upload/drivers/Epson_JavaPOS_ADK_1141_for_Linux.tar.gz'

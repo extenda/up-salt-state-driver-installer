@@ -2,7 +2,7 @@
 <!DOCTYPE config PUBLIC "" "http://www.extenda.com/dtd/config.dtd">
 <config>
 	<group name="Peripherals">
-		<group name="{{ layer.layerName }}">
+		<group name="{{ layer.layer }}">
 			<value name="logicalName" type="String" modifier="default">{{ layer.jposLogicalName }}</value>
 		</group>
 	</group>
